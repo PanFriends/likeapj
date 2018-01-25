@@ -36,120 +36,14 @@
  Copyright 2016 American Astronomical Society  
  
 
- Jan. 25, 2018                                                   
- Includes 57 fixes/modifications                                 
- to match AAS journals published look                            
- as of Jan. 2018 by                                              
+ Jan. 25, 2018:                                                  
+ Includes 57 fixes/modifications to match AAS journals published look as of Jan. 2018 by                                           
  Panayiotis Tzanavaris                                           
  panayiotis.tzanavaris-1@nasa.gov                                
  anax93@yahoo.com                                                
 
-                                              
-## -----------WHAT YOU NEED TO DO----------------
-                                              %
-In summary, in --*addition*-- to aastex61     %
-standards, the LaTeX source needs:            %
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-1:                                            %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-At top:                                       %      
-\documentclass[twocolumn, apj]{likeapj}       %
-                                              %
-(replace apj with one of                      %
- apjs, aj, pasp, apjl as needed).             %
-                                              %
-option noj gives no journal in running head,  %
-only authors                                  %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-2:                                            %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\usepackage{mathptmx}                         %
-This gets times fonts both for text and math. %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-3: [some or no dates]                         %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\received{\today}                             % 
-\revised{}                                    %
-\accepted{}                                   %
-\published{}                                  %
-                                              %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-4: Table comments                             %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-                                              %
- If the table comments use a different font   %
-size compared to the actual table values,     %
-a new declaration is needed right before the  %
-\tablecomments, e.g.                          %
-                                              %
-\tabletypesize{\small}                        %
-\tablecomments{                               %    
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-5: Appendix                                   %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
- Style has two-column as default.             %
- To get the Appendix section heading correct, %
- put \\ right before the appendix section     %
- title text.                                  %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-6: Tables                                     %
- Style maintains full functionality for       %
- AASTEX6.1 tables, including longtable.       %
- Default row spacing is probably too large;   %
- you may want to consider using something like%
-                                              %
-\renewcommand{\arraystretch}{0.85}            %
-                                              %
-right before the table LaTex code to control  %
-this.                                         %   
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-6: In order to link only the year in          %
-citations, uncomment and put the following    %
-in the package declaration area of the        %
-LaTex source:                                 %   
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\usepackage{etoolbox}
-\makeatletter
-
-% Patch case where name and year are separated by aysep
-\patchcmd{\NAT@citex}
-  {\@citea\NAT@hyper@{%
-     \NAT@nmfmt{\NAT@nm}%
-     \hyper@natlinkbreak{\NAT@aysep\NAT@spacechar}{\@citeb\@extra@b@citeb}%
-     \NAT@date}}
-  {\@citea\NAT@nmfmt{\NAT@nm}%
-   \NAT@aysep\NAT@spacechar\NAT@hyper@{\NAT@date}}{}{}
-
-% Patch case where name and year are separated by opening bracket
-\patchcmd{\NAT@citex}
-  {\@citea\NAT@hyper@{%
-     \NAT@nmfmt{\NAT@nm}%
-     \hyper@natlinkbreak{\NAT@spacechar\NAT@@open\if*#1*\else#1\NAT@spacechar\fi}%
-       {\@citeb\@extra@b@citeb}%
-     \NAT@date}}
-  {\@citea\NAT@nmfmt{\NAT@nm}%
-   \NAT@spacechar\NAT@@open\if*#1*\else#1\NAT@spacechar\fi\NAT@hyper@{\NAT@date}}
-  {}{}
-
-  \makeatother
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
- WARNING WARNING WARNING WARNING WARNING      %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-The purpose of this class is to produce       %
-a format closely similar to the published     %
-pdf version. As such it has not been tested   %
-and should be considered *not* appropriate    %
-for options                                   %
-other than twocolumn, or for using fonts      %
-other than mathptmx as indicated above.       %    
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
- Fix/modification list                                                       %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
- (PT) 01/24/2018: 57 *individual* items; overall summary
+ ## List of modifications/fixes:
+  (PT) 01/24/2018: 57 *individual* items; overall summary
  in 26 items:
 
 1. New options for running head for four AAS journals.
@@ -178,6 +72,16 @@ other than mathptmx as indicated above.       %
 24. ``Received..., revised'', font/case adjusted.
 25. Frontpage email not footnote, blue link in author list.
 26. Several skips/spaces adjusted.
+
+                                              
+## WHAT YOU NEED TO DO
+                                              %
+In summary, in --*addition*-- to aastex61     %
+standards, the LaTeX source needs:            %
+
+
+
+
 
 
 
