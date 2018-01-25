@@ -147,6 +147,11 @@ LaTex source:
 
 \makeatother
 
+# WARNING
+The purpose of this class is to produce a format closely similar to
+the published pdf version. As such it has **not** been tested and should
+be considered **not** appropriate for options other than twocolumn, or
+for using fonts other than mathptmx as indicated above.
 
 
                                              
