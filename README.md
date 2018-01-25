@@ -1,8 +1,8 @@
 # likeapj
  LaTeX class and bibliography style files for AAS journals.
  
- -likeapj.cls v1.0, 25 January 2018
- -likeapj.bst v1.0, 25 January 2018
+ - likeapj.cls v1.0, 25 January 2018
+ - likeapj.bst v1.0, 25 January 2018
  
  
  The latest version is available here.
@@ -12,10 +12,6 @@
 
  **Copyright 2017-1018 Panayiotis Tzanavaris**
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
- Comments or suggestions welcome! However, the author cannot promise
- to reply or implement.
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
  This work may be distributed and/or modified under the
  conditions of the LaTeX Project Public License, either version 1.3
  of this license or (at your option) any later version.
@@ -31,16 +27,15 @@
  This work consists of the files likeapj.cls, likeapj.bst.
  
  
-
-
+ ##likeapj.cls
  
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
- This file builds upon:
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
- AASTeX61.cls                                  %%
- October 5, 2016                               %%
- December 28, 2016 (bug fix on .bib file)      %%
- Copyright 2016 American Astronomical Society  %%
+ This builds upon:
+
+ AASTeX61.cls                                  
+ October 5, 2016                               
+ December 28, 2016 (bug fix on .bib file)      
+ Copyright 2016 American Astronomical Society  
+ 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
  Jan. 25, 2018                                                   %%
  Includes 57 fixes/modifications                                 %%
