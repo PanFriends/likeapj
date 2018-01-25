@@ -154,7 +154,15 @@ be considered **not** appropriate for options other than twocolumn, or
 for using fonts other than mathptmx as indicated above.
 
 
-                                             
+## likeapj.bst
+This is a modification of apj.bst (as revised v1.14 2016/10/5 Amy Hendrickson).
+ 
+## List of modifications/fixes:
+(PT) 01/24/2018: 2 items
+
+1. Reference list: Journal name is magenta DOI link
+2. Reference list: Volume/page is blue ADS link
+
                                              
 
 
