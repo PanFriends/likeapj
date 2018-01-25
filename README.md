@@ -120,9 +120,13 @@ citations, uncomment and put the following
 in the package declaration area of the        
 LaTex source:
 
+
 \usepackage{etoolbox}
+
 \makeatletter
+
 % Patch case where name and year are separated by aysep
+
 \patchcmd{\NAT@citex}
   {\@citea\NAT@hyper@{%
      \NAT@nmfmt{\NAT@nm}%
@@ -132,6 +136,7 @@ LaTex source:
    \NAT@aysep\NAT@spacechar\NAT@hyper@{\NAT@date}}{}{}
 
 % Patch case where name and year are separated by opening bracket
+
 \patchcmd{\NAT@citex}
   {\@citea\NAT@hyper@{%
      \NAT@nmfmt{\NAT@nm}%
@@ -141,6 +146,7 @@ LaTex source:
   {\@citea\NAT@nmfmt{\NAT@nm}%
    \NAT@spacechar\NAT@@open\if*#1*\else#1\NAT@spacechar\fi\NAT@hyper@{\NAT@date}}
   {}{}
+
 \makeatother
 
 # WARNING
