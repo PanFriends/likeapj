@@ -27,8 +27,7 @@
  This work consists of the files likeapj.cls, likeapj.bst.
  
  
- ##likeapj.cls
- 
+ ## likeapj.cls
  This builds upon:
 
  AASTeX61.cls                                  
@@ -36,21 +35,17 @@
  December 28, 2016 (bug fix on .bib file)      
  Copyright 2016 American Astronomical Society  
  
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
- Jan. 25, 2018                                                   %%
- Includes 57 fixes/modifications                                 %%
- to match AAS journals published look                            %%
- as of Jan. 2018 by                                              %%
- Panayiotis Tzanavaris                                           %%
- panayiotis.tzanavaris-1@nasa.gov                                %%
- anax93@yahoo.com                                                %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-Document class likeapj                        %
-will produce format closely emulating  AAS    %
-journals as of January 2018.                  %
-                                              %
------------WHAT YOU NEED TO DO----------------%
+
+ Jan. 25, 2018                                                   
+ Includes 57 fixes/modifications                                 
+ to match AAS journals published look                            
+ as of Jan. 2018 by                                              
+ Panayiotis Tzanavaris                                           
+ panayiotis.tzanavaris-1@nasa.gov                                
+ anax93@yahoo.com                                                
+
+                                              
+## -----------WHAT YOU NEED TO DO----------------
                                               %
 In summary, in --*addition*-- to aastex61     %
 standards, the LaTeX source needs:            %
