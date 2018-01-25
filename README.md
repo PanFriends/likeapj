@@ -111,7 +111,7 @@ a new declaration is needed right before the
 ## 5: Appendix
 Style has two-column as default.             
 To get the Appendix section heading correct, 
-put **\\** right before the appendix section     
+put **\\\\** right before the appendix section     
 title text.
 
  
