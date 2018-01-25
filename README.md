@@ -92,12 +92,27 @@ only authors
 This gets times fonts both for text and math. 
 
 ## 3:  
-[some or no dates] 
+[some or no dates]
+
 **\received{\today}                              
 \revised{}                                    
 \accepted{}                  
 \published{}**  
 
+## 4: Table comments 
+If the table comments use a different font   
+size compared to the actual table values,     
+a new declaration is needed right before the  
+\tablecomments, e.g.                          
+                                              
+\tabletypesize{\small}                        
+\tablecomments{ 
+
+## 5: Appendix
+Style has two-column as default.             
+To get the Appendix section heading correct, 
+put **\\** right before the appendix section     
+title text.
 
  
 
