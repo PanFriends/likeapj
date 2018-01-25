@@ -163,6 +163,11 @@ This is a modification of apj.bst (as revised v1.14 2016/10/5 Amy Hendrickson).
 1. Reference list: Journal name is magenta DOI link
 2. Reference list: Volume/page is blue ADS link
 
+## INSTRUCTIONS FOR USE
+In the LaTex source file, where you want to have the reference list:
+
+**\bibliographystyle{likeapj}**
+
                                              
 
 
