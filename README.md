@@ -79,7 +79,7 @@ In your LaTex source file:
 
 ##1:
 At top:                                             
-\documentclass[twocolumn, apj]{likeapj}       
+** \documentclass[twocolumn, apj]{likeapj} **      
                                               
 (replace apj with one of                      
  apjs, aj, pasp, apjl as needed).             
