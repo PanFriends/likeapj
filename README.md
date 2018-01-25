@@ -77,15 +77,30 @@
 ## INSTRUCTIONS FOR USE
 In your LaTex source file:
 
-##1:
+## 1:
 At top:                                             
 **\documentclass[twocolumn, apj]{likeapj}**      
                                               
 (replace apj with one of                      
- apjs, aj, pasp, apjl as needed).             
+ **apjs, aj, pasp, apjl** as needed).             
                                               
-option noj gives no journal in running head,  
-only authors                                  
+option **noj** gives no journal in running head,  
+only authors 
+
+## 2:
+**\usepackage{mathptmx}**                        
+This gets times fonts both for text and math. 
+
+## 3:  
+[some or no dates] 
+**\received{\today}                              
+\revised{}                                    
+\accepted{}                  
+\published{}**  
+
+
+ 
+
 
                                              
                                              
