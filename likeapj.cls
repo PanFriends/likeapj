@@ -1,5 +1,5 @@
 %% This is likeapj.cls v1.1, January 18, 2019
-%% The latest version is available on the web. Somewhere.
+%% The latest version is available on https://github.com/qtast/likeapj/releases/latest 
 %%
 %% Use together with likeapj.bst to get reference list
 %% correctly color-coded and hyperlinked.
