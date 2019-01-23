@@ -93,7 +93,7 @@ Astronomy Letters (AstL) and Astronomische Nachrichten (AN) need \anl and \anach
 
 
 ## Fix/modification list - Summary January 18, 2019
-63 *individual* items; summary in condensed 28 items.
+63 *individual* items; condensed summary in 28 items.
 1. New options for running head for four AAS journals.
 2. Two column appendix.
 3. Appendix section titles ``Appendix A'' etc.
