@@ -1,0 +1,220 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%BEGIN: RECOMMENDED CONTENT FOR LIKEAPJ
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[tighten,twocolumn,useAMS,appendixfloats,apj]{likeapj}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Only year is linked in citations, per AAS look
+\usepackage{etoolbox}
+\makeatletter
+% Patch case where name and year are separated by aysep
+\patchcmd{\NAT@citex}
+  {\@citea\NAT@hyper@{
+     \NAT@nmfmt{\NAT@nm}
+     \hyper@natlinkbreak{\NAT@aysep\NAT@spacechar}{\@citeb\@extra@b@citeb}
+     \NAT@date}}
+  {\@citea\NAT@nmfmt{\NAT@nm}
+   \NAT@aysep\NAT@spacechar\NAT@hyper@{\NAT@date}}{}{}
+
+% Patch case where name and year are separated by opening bracket
+\patchcmd{\NAT@citex}
+  {\@citea\NAT@hyper@{
+     \NAT@nmfmt{\NAT@nm}
+     \hyper@natlinkbreak{\NAT@spacechar\NAT@@open\if*#1*\else#1\NAT@spacechar\fi}
+       {\@citeb\@extra@b@citeb}
+     \NAT@date}}
+  {\@citea\NAT@nmfmt{\NAT@nm}
+   \NAT@spacechar\NAT@@open\if*#1*\else#1\NAT@spacechar\fi\NAT@hyper@{\NAT@date}}
+  {}{}
+
+  \makeatother
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{mathptmx}
+
+\received{\today}
+\revised{}
+\accepted{}
+\published{}
+\submitjournal{ArXiv}
+
+\shorttitle{}
+\shortauthors{Tzanavaris}
+
+
+\usepackage{graphicx,natbib,bm,times,amsmath,float}
+
+%hyperref specifics - now AAS defaults
+\hypersetup{linkcolor=blue,citecolor=blue,filecolor=cyan,urlcolor=blue,bookmarksnumbered=true,bookmarksopen=true}
+\usepackage[all]{hypcap}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%END: RECOMMENDED CONTENT FOR LIKEAPJ
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\include{newcomm}   %% using \newcommand: cp ~/notes/REF/newcomm.tex
+%mimic sc for number 11
+\newcommand{\likeapj}{\textit{likeapj}}
+\newcommand\aastex{AAS\TeX}
+
+
+
+\begin{document}
+\title{Do it \likeapj: Alternative Open Source \LaTeX\ Class and Bibliography files for Optimal AAS Journal Emulation}
+\author{Panayiotis~Tzanavaris}
+\affil{University of Maryland, Baltimore County, 1000
+  Hilltop Circle, Baltimore, MD 21250, USA}
+\affil{Laboratory for X-ray Astrophysics, NASA/Goddard
+  Space Flight Center, Mail Code 662, Greenbelt, Maryland, 20771, USA}%;\email{spam@spam.com}}
+
+\begin{abstract}
+  We present and make publicly available new \LaTeX\ class and bibliography styles that most closely emulate the current format of American Astronomical Society (AAS) journals. The two files {\tt likeapj.cls} and {\tt likeapj.bst} can help produce a pdf preprint that closely matches the final published version. We also provide a set of guidelines, following which, to our knowledge, a much more faithful formatting can be obtained than with other available files. Improvements range from correct fonts and case for Sections and Subsections, to running heads, to fully hyperlinked figures, tables, and references following current AAS style. The present document, as well as preprint \href{https://arxiv.org/abs/1901.06464}{https://arxiv.org/abs/1901.06464} can be used as templates.
+\end{abstract}
+
+\keywords{ typesetting:\LaTeX\ publications:AAS }
+
+\section{Introduction}
+A considerable number of articles from the the current astronomy and astrophysics literature are published in journals of the American Astronomical Society (AAS). While the advent of Donald Knuth's \TeX\ and Leslie Lamport's \LaTeX\ gave authors wide control and responsibility for formating their articles, initially there was no adequate template for producing preprints with the actual AAS look. That void was eventually filled by Maxim Markevitch's and Alexey Vikhlinin's highly popular \href{https://hea-www.harvard.edu/~alexey/emulateapj/}{\textit{emulateapj}} package, which first\footnote{This introduction does not mean to be comprehensive or even fully accurate. The author lacks the resources to provide a proper history of journal formatting.} appeared more than twenty years ago with the preprint for \citet{markevitch1997} (\href{https://arxiv.org/abs/astro-ph/9704106}{https://arxiv.org/abs/astro-ph/9704106}) on ArXiv.
+
+Distributed by AAS journals in 2016, \aastex\ v6.0 and 6.1 are based on, and incorporate several features of, {\textit{emulateapj}. \aastex\ v6.2 was distributed in 2018. In our experience, due to changes in the standard formatting of AAS articles, and unlike with earlier versions of {\textit{emulateapj}, the format obtained for preprints shows some key differences from the final published one. In particular, a forced white space after the abstract (now removed in \aastex\ v6.2) motivated this author to start modifying the \aastex v6.1 style file {\tt aastex61.cls}. In addition, we modified the open source file {\tt apj.bst}, which, when used with {\it bibtex}, will now produce color-coded hyperlinked reference lists, where the journal name is purple and hyperlinked to the Digital Object Identifier (\href{http://www.doi.org/index.html}{DOI}) entry of the article, and the volume/page entry blue and hyperlinked to the \href{https://ui.adsabs.harvard.edu/}{NASA Astrophysics Data System} abstract entry. Eventually, so many modifications where included, that a full-blown style file emerged (\likeapj\ 1.0). This was first introduced with \href{https://arxiv.org/abs/1801.08544}{https://arxiv.org/abs/1801.08544}. After further testing and additional improvements, we are making the class and bibliography style files of version 1.1 publicly available via this document. This is the latest version and can also be found on \href{https://github.com/qtast/likeapj/releases/latest}{https://github.com/qtast/likeapj/releases/latest}. Readers interested in a quick quide can go straight to \scr{sec-guide}.
+
+    \section{Implementation}
+    \likeapj\ is built on top of \aastex\ v6.1. Thus, all new functionality of that package\footnote{See \href{https://journals.aas.org/aastex-revisionhistory/\#\_6.1}{https://journals.aas.org/aastex-revisionhistory/\#\_6.1}.} should work. Items introduced in \aastex\ v6.2\footnote{See \href{https://journals.aas.org/aastex-revisionhistory/\#\_6.2}{https://journals.aas.org/aastex-revisionhistory/\#\_6.2}.} may not work. In particular Research Note style is not supported. Only {\it ApJ, ApJS, ApJL, PASP} styles are supported. However, other \aastex\ v6.2 changes are already introduced by \textit{likeapj}. As of January 18, 2019 sixty three individual adjustments have been introduced. We present an overview of features introduced below, which corresponds to the condensed summary presented in \tr{tab-changes}. 
+
+    \input{tab-changes}
+
+    \subsection{Overview of Changes}
+\begin{enumerate}
+\itemsep-3pt 
+\item The running head now has options for four AAS journals.
+\item Appendix is in two-column style.
+\item Appendix section titles have correct font and overall appearance.
+\item Page numbers are centered at the bottom of all pages.
+\item The style of the running head closely matches AAS style in font.
+\item The main title is in bold and lower case.
+\item The font for the author list has been adjusted.
+\item The abstract has no indentation, is centered, and has smaller width
+  than the main text; its title is lower case.
+\item {\it Keywords} has been replaced by {\it Key words}; the width and offset of the key words text from the next Section below have been adjusted.
+\item Footnotes now feature a horizontal rule with appropriate width and length.
+\item Footnote separations from main text have been adjusted.
+\item Footnote numbers are no longer indented.
+\item Section titles and numbers are in bold and lower case, as is appropriate.
+\item Subsection titles and numbers are in italics and lower case, as is appropriate.
+\item The font for the references list has been adjusted and the list is now two-column, naturally continuing from where the text ends.
+\item The {\bf References} title is centered over the first column of the reference list.
+\item The footnote font has been adjusted.
+\item The font for the {\it Facilities} entry has been adjusted and skips have been cancelled.
+\item Sections are now bookmarked in the final pdf.
+\item Table titles are centered, italics are cancelled, and the skip to content has been adjusted.
+\item The text {\bf Note} in tables is in bold by default.
+\item Big skip before {\it Received, etc} removed.
+\item The font and case for {\it Received..., revised,...} have been adjusted.
+\item e-mail can be included on the title page instead of footnote (but any e-mail will invite spam).
+\item Several skip and space issues resolved.
+\item Text width, column separation, text height, title width have been improved.
+  \item References to Astronomy Letters (AstL) and Astronomische Nachrichten (AN) will be correctly hyperlinked, provided the bib file entry uses {\tt{\textbackslash\textbackslash}anl} and {\tt{\textbackslash\textbackslash}anach}, respectively, in the journal entry field. 
+\end{enumerate}
+
+
+\section{Guidelines}\label{sec-guide}
+For guidance and example use, we recommend:
+\begin{itemize}
+\itemsep-3pt 
+\item The current document,
+\item preprint \href{https://arxiv.org/abs/1801.08544}{https://arxiv.org/abs/1801.08544}, or
+\item preprint \href{https://arxiv.org/abs/1901.06464}{https://arxiv.org/abs/1901.06464} \\(for \citet{tzanavaris2018}). This is still adequate for examples but uses version 1.0 so it is not recommended that you use the associated {\tt cls} file.
+\end{itemize}
+
+
+Place the two files {\tt likeapj.cls} and {\tt likeapj.bst} in your article directory and follow the instructions below, which can also be found at the top of {\tt likeapj.cls}. Items in \scr{sec-befdoc} take you a long way towards the desired result, so are pretty essential. The remaining items can provide some further impressive improvements.
+
+\subsection{Items to place before {\textbackslash}begin\{document\}}\label{sec-befdoc}
+\begin{enumerate}
+\item  {\tt {\textbackslash}documentclass[twocolumn, apj]\{likeapj\}}
+  
+  Replace {\tt apj} with one of {\tt apjs}, {\tt aj}, {\tt pasp}, {\tt apjl} or {\tt noj} for no journal in running head.
+
+\item A hack for linking only year in citations is provided in Appendix~\ref{app-hack}.
+
+\item {\tt {\textbackslash}usepackage\{mathptmx\}}
+  
+  This gets consistent AAS-looking Times-like fonts both for text and math.
+
+\item If you want to associated dates with submission stages use something like:
+\begin{verbatim}
+\received{\today}
+\revised{2019 Jan 32}
+\accepted{}
+\published{}
+\end{verbatim}
+ 
+\end{enumerate}
+
+\subsection{Table related items}
+\begin{enumerate}
+\item The style maintains full functionality for \aastex\ v6.1 tables, including longtable. Default row spacing is probably too large; you may want to consider using something like
+\begin{verbatim}
+{\renewcommand{\arraystretch}{0.85}}
+\end{verbatim}
+right before the table LaTex code to control this.
+\item If the table comments use a different font size compared to the actual table values, include a new declaration right before the command {\textbackslash}{\tt tablecomments}, e.g.
+  \begin{verbatim}
+\tabletypesize{\small}
+\tablecomments{
+\end{verbatim}
+
+\end{enumerate}
+
+\subsection{Appendix items}
+To get the Appendix section heading correct, put \textbackslash\textbackslash\ right before the appendix section title text.
+
+\section{Summary and Conclusions}
+This work is entirely open source and may be distributed and/or modified under the conditions of the LaTeX Project Public License. This work is in no way endorsed by the American Astronomical Society and is provided as is in the hope that you may find it useful.
+
+The author welcomes your comments, feedback, and suggestions, which are invaluable for further improving the code. Sadly, due to limited resources, although he might, he cannot promise to fix your issues.
+
+\acknowledgments This is essentially an extension of {\tt emulateapj}
+and \aastex\ v6.1. As such it rests on ``the shoulders of giants'',
+whose work and open source products are highly appreciated. The author apologizes for not explicitly acknowledging the many people who contributed to these open source projects. 
+
+%Need likeapj.bst in directory
+\bibliographystyle{likeapj}
+%Need example.bib in directory
+\bibliography{example}    
+
+\appendix
+\section{\\Linking Only Year in Citations}\label{app-hack}
+        {\scriptsize
+\begin{verbatim}
+
+\usepackage{etoolbox}
+\makeatletter
+% Patch case where name and year are separated by aysep
+\patchcmd{\NAT@citex}
+  {\@citea\NAT@hyper@{
+     \NAT@nmfmt{\NAT@nm}
+     \hyper@natlinkbreak{\NAT@aysep\NAT@spacechar}{\@citeb\@extra@b@citeb}
+     \NAT@date}}
+  {\@citea\NAT@nmfmt{\NAT@nm}
+   \NAT@aysep\NAT@spacechar\NAT@hyper@{\NAT@date}}{}{}
+
+% Patch case where name and year are separated by opening bracket
+\patchcmd{\NAT@citex}
+  {\@citea\NAT@hyper@{
+     \NAT@nmfmt{\NAT@nm}
+     \hyper@natlinkbreak{\NAT@spacechar\NAT@@open\if*#1*\else#1\NAT@spacechar\fi}
+       {\@citeb\@extra@b@citeb}
+     \NAT@date}}
+  {\@citea\NAT@nmfmt{\NAT@nm}
+   \NAT@spacechar\NAT@@open\if*#1*\else#1\NAT@spacechar\fi\NAT@hyper@{\NAT@date}}
+  {}{}
+  \makeatother
+
+\end{verbatim}
+
+}
+
+    
+\end{document}
+
+
+
